@@ -1,0 +1,60 @@
+﻿@model IEnumerable< Esports_Management.Models.SportModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/css/NewIndex.css" />
+</head>
+
+    <div class="main-search"><input type="text" placeholder="Search ....."><div class="fa-solid fa-magnifying-glass" id="search-logo"></div></div>
+
+    <div class="head-container">
+        <h1 id="heading">Sports</h1>
+        <p style="color:green;font-size:1.2rem" id="msg">
+            @TempData["msg"]
+        </p>
+        <div class="Add"><a asp-action="Create">Add Sport</a></div>
+    </div>
+    <hr />
+
+    <div class="My-table">
+<table>
+    <thead>
+        <tr >
+            <th>
+                @Html.DisplayNameFor(model => model.Sp_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sp_Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sp_Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sp_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sp_Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sp_Description)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SId">Edit</a> |
+                @*<a asp-action="Details" asp-route-id="@item.SId">Details</a> |*@
+                <a asp-action="Delete" asp-route-id="@item.SId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+

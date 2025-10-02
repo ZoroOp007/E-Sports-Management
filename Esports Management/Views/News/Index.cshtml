@@ -1,0 +1,70 @@
+﻿@model IList<NewsModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/NewIndex.css" />
+</head>
+
+<div class="main-search"><input type="text" placeholder="Search ....."><div class="fa-solid fa-magnifying-glass" id="search-logo"></div></div>
+
+<div class="head-container">
+    <h1 id="heading">Notice</h1>
+    <p style="color:green;font-size:1.2rem" id="msg">
+        @TempData["msg"]
+    </p>
+    <div class="Add"><a asp-action="Create">Add Notice</a></div>
+</div>
+<hr />
+<div class="My-table">
+    <table>
+        <thead>
+            <tr>
+                <td>
+                    SNo.
+                </td>
+                <td>
+                    Date
+                </td>
+                <td>
+                    Event
+                </td>
+                <td>
+                    Description
+                </td>
+                <td>
+                    View Pdf
+                </td>
+                <td>
+                </td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var items in Model)
+            {
+                <tr>
+                    <td>@items.Notice_Code</td>
+
+                    <td>@items.Notice_Date</td>
+
+                    <td>@items.Event.E_Name</td>
+
+                    <td>@items.Description</td>
+
+                    <td><a href="@items.image_path">View Pdf</a></td>
+
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@items.Notice_Id" style="color:red"><u>Delete</u></a>
+
+                        <a asp-action="Edit" asp-route-id="@items.Notice_Id"><u>Edit</u></a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

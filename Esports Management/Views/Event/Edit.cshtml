@@ -1,0 +1,73 @@
+﻿@model Esports_Management.Models.EventModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/css/Create.css" />
+</head>
+
+<div class="main-search"><input type="text" placeholder="Search ....."><div class="fa-solid fa-magnifying-glass" id="search-logo"></div></div>
+
+
+<div class="contain">
+    <div class="head-contain">
+        <div><h4 style="color:cornflowerblue">Edit Event</h4></div>
+        <div class="link">
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="EId" />
+                <div class="form-group">
+                    <label asp-for="E_Name" class="control-label"></label><br />
+                    <input asp-for="E_Name" class="form-control" />
+                    <span asp-validation-for="E_Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Venue" class="control-label"></label><br />
+                    <input asp-for="Venue" class="form-control" />
+                    <span asp-validation-for="Venue" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DateTime" class="control-label"></label><br />
+                    <input asp-for="DateTime" class="form-control" />
+                    <span asp-validation-for="DateTime" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SId" class="control-label"></label><br />
+                    <select asp-for="SId" class="form-control">
+                        <option value="">Select</option>
+                        @foreach (var items in ViewBag.Sport)
+                        {
+                            <option value="@items.SId">@items.Sp_Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="SId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CreatedBy" class="control-label"></label><br />
+                    <input asp-for="CreatedBy" class="form-control" readonly value="@User.Identity.Name" />
+                    <span asp-validation-for="CreatedBy" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn-primary" />
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

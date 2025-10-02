@@ -1,0 +1,51 @@
+﻿@model Esports_Management.Models.SportModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+@*<h1>Create</h1>*@
+
+<div class="main-search"><input type="text" placeholder="Search ....."><div class="fa-solid fa-magnifying-glass" id="search-logo"></div></div>
+<div class="contain">
+    <div class="head"><h4>New Sport</h4></div>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Sp_Name" class="control-label"></label>
+                <input asp-for="Sp_Name" class="form-control" />
+                <span asp-validation-for="Sp_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sp_Type" class="control-label"></label>
+                <Select asp-for="Sp_Type" class="form-control" placeholder="Select Sports type" >
+                    <option value="">Select</option>
+                    <option value ="Individual">Individual</option>
+                    <option value="Team">Team</option>
+                    </Select>
+                <span asp-validation-for="Sp_Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sp_Description" class="control-label"></label>
+                <input asp-for="Sp_Description" class="form-control" />
+                <span asp-validation-for="Sp_Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

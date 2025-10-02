@@ -1,0 +1,64 @@
+﻿@model IList<ResultModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/NewIndex.css" />
+</head>
+
+    <div class="main-search"><input type="text" placeholder="Search ....."><div class="fa-solid fa-magnifying-glass" id="search-logo"></div></div>
+
+    <div class="head-container">
+        <h1 id="heading">Result</h1>
+        <p style="color:green;font-size:1.2rem" id="msg">
+            @TempData["msg"]
+        </p>
+        <div class="Add"><a asp-action="Create">Add Result</a></div>
+    </div>
+    <hr />
+
+<div class="table table-responsive">
+    <table class="table  table-hover table-striped">
+        <tr>
+          <td>
+              Result Id
+          </td>
+
+          <td>
+              Event
+          </td>
+          
+          <td>
+                Player 1
+          </td>
+          <td>
+              Score
+          </td>
+          <td>
+              Player 2
+          </td>
+          <td>
+              Score
+          </td>
+          <td>
+              Winner
+          </td>
+        </tr>
+
+        @foreach(var items in Model)
+        {
+            <tr>
+                <td>@items.RId</td>
+                <td>@items.Events.E_Name</td>
+                <td>@items.Player1_Id</td>
+                <td>@items.Score1</td>
+                <td>@items.Player2_Id</td>
+                <td>@items.Score2</td>
+                <td>@items.Winner</td>
+            </tr>
+        }
+    </table>
+</div>
+

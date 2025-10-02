@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+   
+}
+
+
+
+<div class="main-body" style="margin-top:20px;">
+    <div class="main-intro">
+        <h1 style="text-align: center;">Welcome to your Dashboard,@User.Identity.Name</h1><br>
+
+    </div>
+    <br>
+    <div class="main-content">
+        <div class="main-link">
+            <div class="main-link-logo">
+                <i class="bi bi-person"></i>
+            </div>
+
+            <div class="main-link-content">
+                <h3 style="font-size:1.3rem;"><a asp-controller="AppRoles" asp-action="Index">Add Roles</a></h3><br>
+                <p>To create a new Role , click on the above link</p>
+                <p>You can add a new role for user.</p>
+            </div>
+        </div>
+
+        <div class="main-link">
+            <div class="main-link-logo">
+                <i class="fa fa-bank"></i>
+            </div>
+
+            <div class="main-link-content">
+                <h3 style ="font-size:1.3rem;"><a href="#">Add Colleges</a></h3><br>
+                <p>To add a new College , click on the above link</p>
+                <p>You can primarily add a new College</p>
+            </div>
+        </div>
+
+        <div class="main-link">
+            <div class="main-link-logo">
+                <i class="fa-solid fa-user-graduate"></i>
+            </div>
+
+            <div class="main-link-content">
+                <h3 style="font-size:1.3rem;"><a href="#">Add Students</a></h3><br>
+                <p>To Add a new student , click on the above link</p>
+                <p>You can primarily add a new Student</p>
+            </div>
+        </div>
+
+       
+
+    </div>
+</div>

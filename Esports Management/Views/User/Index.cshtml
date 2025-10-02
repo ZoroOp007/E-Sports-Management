@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Esports_Management.Models.UserModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<head><link rel="stylesheet" href="~/css/NewIndex.css"/> </head>
+<div class="My-Index">
+<div class="main-search"><input type="text" placeholder="Search ....."><div class="fa-solid fa-magnifying-glass" id="search-logo"></div></div>
+
+    <div class="head-container">
+        <h1 id="heading">Student</h1>  
+        <p style="color:green;font-size:1.2rem" id="msg">
+            @TempData["msg"]
+        </p>
+        <div class="Add"><a asp-action="Create">Add Student</a></div>
+    </div> 
+    <hr />
+ 
+    
+    <div class="My-table">
+        <table >
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model=>model.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DOB)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Gender)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Organizer)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DOB)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Organizer.Name)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" >Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id" >Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" >Delete</a>
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>
+    </div>
+</div>
